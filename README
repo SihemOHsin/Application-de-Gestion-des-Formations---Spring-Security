@@ -10,21 +10,6 @@ http://localhost:8080/sessions
 
 http://localhost:8080/inscriptions
 
-http://localhost:8080/formations/recherche
+http://localhost:8080/formations
 
-http://localhost:8080/utilisateurs — liste des comptes.
-
-
-
-http://localhost:8080/utilisateurs/ajouter — création.
-
-
-
-http://localhost:8080/utilisateurs/modifier/1 — modification
-
-with ADMIN account (sihem):
-http://localhost:8080/utilisateurs.
-
-Using generated security password: 66bc5ba8-99e0-4596-8032-9933357b4c95
-
-terminal : tree /F /A src or tree /F /A src > structure.txt
+http://localhost:8080/utilisateurs 
