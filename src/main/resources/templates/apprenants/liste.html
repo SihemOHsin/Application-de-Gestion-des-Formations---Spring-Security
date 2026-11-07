@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{common/header :: header}"></head>
+
+<body>
+
+<div th:replace="~{common/menu :: menu}"></div>
+
+<div class="container mt-5">
+
+    <div class="d-flex justify-content-between mb-4">
+
+        <h2>Gestion des apprenants</h2>
+
+        <a th:href="@{/apprenants/nouveau}"
+           class="btn btn-primary">
+            Nouvel apprenant
+        </a>
+
+    </div>
+
+    <table class="table table-bordered table-striped">
+
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Numéro</th>
+            <th>CIN</th>
+            <th>Prénom</th>
+            <th>Nom</th>
+            <th>Email</th>
+            <th>Date naissance</th>
+            <th>Première inscription</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+
+        <tbody>
+
+        <tr th:each="a : ${apprenants}">
+
+            <td th:text="${a.id}"></td>
+            <td th:text="${a.numero}"></td>
+            <td th:text="${a.cin}"></td>
+            <td th:text="${a.prenom}"></td>
+            <td th:text="${a.nom}"></td>
+            <td th:text="${a.email}"></td>
+            <td th:text="${a.dateNaissance}"></td>
+            <td th:text="${a.datePremiereInscription}"></td>
+
+            <td>
+
+                <a th:href="@{/apprenants/edit/{id}(id=${a.id})}"
+                   class="btn btn-warning btn-sm">
+                    Modifier
+                </a>
+
+                <form th:action="@{/apprenants/delete/{id}(id=${a.id})}"
+                      method="post"
+                      class="d-inline">
+
+                    <button class="btn btn-danger btn-sm">
+                        Supprimer
+                    </button>
+
+                </form>
+
+            </td>
+
+        </tr>
+
+        </tbody>
+
+    </table>
+
+</div>
+
+<footer th:replace="~{common/footer :: footer}"></footer>
+
+</body>
+</html>

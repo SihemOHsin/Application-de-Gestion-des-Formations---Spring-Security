@@ -1,0 +1,188 @@
+
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{common/header :: header}"></head>
+
+<body class="bg-light">
+
+<!-- Menu existant -->
+<div th:replace="~{common/menu :: menu}"></div>
+
+<main class="container py-5">
+
+    <!-- Bandeau de bienvenue -->
+    <section class="welcome-banner text-white p-4 p-md-5 mb-5">
+
+        <div class="row align-items-center">
+
+            <div class="col-lg-8">
+                <span class="badge bg-white text-primary mb-3 px-3 py-2">
+                    Plateforme de formation
+                </span>
+
+                <h1 class="display-5 fw-bold mb-3">
+                    APPLICATION DE GESTION DES FORMATIONS
+                </h1>
+
+                <h4 class="fw-normal mb-3">
+                    Mpdsir 
+                </h4>
+
+                <p class="lead mb-0">
+                    Gérez facilement les formations, les apprenants,
+                    les sessions et les inscriptions depuis un
+                    espace unique.
+                </p>
+            </div>
+
+            <div class="col-lg-4 text-center d-none d-lg-block">
+                <div class="welcome-icon">
+                    &#127891;
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Titre des fonctionnalites -->
+    <div class="mb-4">
+
+        <h2 class="fw-bold section-title">
+            Tableau de bord
+        </h2>
+
+        <p class="text-muted">
+            Accédez rapidement aux fonctionnalités de votre application.
+        </p>
+
+    </div>
+
+    <!-- Cartes -->
+    <div class="row g-4">
+
+        <!-- Recherche -->
+        <div class="col-md-6 col-lg-4">
+            <a th:href="@{/formations/recherche}"
+               class="dashboard-card text-decoration-none">
+
+                <div class="card-icon icon-blue">
+                    &#128269;
+                </div>
+
+                <h5>Rechercher une formation</h5>
+
+                <p>
+                    Recherchez les formations disponibles
+                    selon vos critères.
+                </p>
+
+                <span class="card-link">
+                    Accéder &rarr;
+                </span>
+
+            </a>
+        </div>
+
+        <!-- Apprenants -->
+        <div class="col-md-6 col-lg-4">
+            <a th:href="@{/apprenants}"
+               class="dashboard-card text-decoration-none">
+
+                <div class="card-icon icon-green">
+                    &#128101;
+                </div>
+
+                <h5>Gestion des apprenants</h5>
+
+                <p>
+                    Consultez et gérez les informations
+                    des apprenants.
+                </p>
+
+                <span class="card-link">
+                    Accéder &rarr;
+                </span>
+
+            </a>
+        </div>
+
+        <!-- Themes -->
+        <div class="col-md-6 col-lg-4">
+            <a th:href="@{/themes}"
+               class="dashboard-card text-decoration-none">
+
+                <div class="card-icon icon-purple">
+                    &#128218;
+                </div>
+
+                <h5>Gestion des thèmes</h5>
+
+                <p>
+                    Organisez et gérez les différents
+                    thèmes de formation.
+                </p>
+
+                <span class="card-link">
+                    Accéder &rarr;
+                </span>
+
+            </a>
+        </div>
+
+        <!-- Sessions -->
+        <div class="col-md-6 col-lg-4">
+            <a th:href="@{/sessions}"
+               class="dashboard-card text-decoration-none">
+
+                <div class="card-icon icon-orange">
+                    &#128197;
+                </div>
+
+                <h5>Gestion des sessions</h5>
+
+                <p>
+                    Planifiez et consultez les sessions
+                    de formation.
+                </p>
+
+                <span class="card-link">
+                    Accéder &rarr;
+                </span>
+
+            </a>
+        </div>
+
+        <!-- Inscriptions -->
+        <div class="col-md-6 col-lg-4">
+            <a th:href="@{/inscriptions}"
+               class="dashboard-card text-decoration-none">
+
+                <div class="card-icon icon-pink">
+                    &#128221;
+                </div>
+
+                <h5>Inscriptions</h5>
+
+                <p>
+                    Gérez les inscriptions des apprenants
+                    aux sessions.
+                </p>
+
+                <span class="card-link">
+                    Accéder &rarr;
+                </span>
+
+            </a>
+        </div>
+
+    </div>
+
+</main>
+
+<!-- Footer existant -->
+<footer th:replace="~{common/footer :: footer}"></footer>
+
+</body>
+</html>

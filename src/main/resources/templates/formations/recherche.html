@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{common/header :: header}"></head>
+
+<body>
+
+<div th:replace="~{common/menu :: menu}"></div>
+
+<div class="container mt-5">
+
+    <h2 class="mb-4">
+        Rechercher une formation
+    </h2>
+
+    <form th:action="@{/formations/recherche}"
+          method="get">
+
+        <div class="mb-3">
+
+            <label class="form-label">
+                Thème
+            </label>
+
+            <select name="themeId"
+                    class="form-select"
+                    required>
+
+                <option value="">
+                    Choisir un thème
+                </option>
+
+                <option th:each="theme : ${themes}"
+                        th:value="${theme.id}"
+                        th:text="${theme.theme}"
+                        th:selected="${themeId != null and theme.id == themeId}">
+                </option>
+
+            </select>
+
+        </div>
+
+        <div class="mb-3">
+
+            <label class="form-label">
+                Du
+            </label>
+
+            <input type="date"
+                   name="dateDebut"
+                   class="form-control"
+                   th:value="${dateDebut}"
+                   required>
+
+        </div>
+
+        <div class="mb-3">
+
+            <label class="form-label">
+                Au
+            </label>
+
+            <input type="date"
+                   name="dateFin"
+                   class="form-control"
+                   th:value="${dateFin}"
+                   required>
+
+        </div>
+
+        <button class="btn btn-primary">
+            Rechercher
+        </button>
+
+    </form>
+
+    <div class="mt-5"
+         th:if="${resultats != null}">
+
+        <h3>Résultats</h3>
+
+        <div th:if="${#lists.isEmpty(resultats)}"
+             class="alert alert-warning">
+
+            Aucune session trouvée.
+
+        </div>
+
+        <table th:if="${!#lists.isEmpty(resultats)}"
+               class="table table-bordered table-striped">
+
+            <thead>
+
+            <tr>
+                <th>Description</th>
+                <th>Thème</th>
+                <th>Date début</th>
+                <th>Date fin</th>
+            </tr>
+
+            </thead>
+
+            <tbody>
+
+            <tr th:each="session : ${resultats}">
+
+                <td th:text="${session.description}">
+                </td>
+
+                <td th:text="${session.themeFormation.theme}">
+                </td>
+
+                <td th:text="${session.dateDebut}">
+                </td>
+
+                <td th:text="${session.dateFin}">
+                </td>
+
+            </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+<footer th:replace="~{common/footer :: footer}"></footer>
+
+</body>
+</html>

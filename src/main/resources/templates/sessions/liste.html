@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{common/header :: header}"></head>
+
+<body>
+
+<div th:replace="~{common/menu :: menu}"></div>
+
+<div class="container mt-5">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <h2>Gestion des sessions</h2>
+
+        <a th:href="@{/sessions/nouveau}"
+           class="btn btn-primary">
+            Nouvelle session
+        </a>
+
+    </div>
+
+    <table class="table table-bordered table-striped">
+
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Description</th>
+            <th>Thème</th>
+            <th>Date début</th>
+            <th>Date fin</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+
+        <tbody>
+
+        <tr th:each="s : ${sessions}">
+
+            <td th:text="${s.id}"></td>
+
+            <td th:text="${s.description}"></td>
+
+            <td>
+                <span th:if="${s.themeFormation != null}"
+                      th:text="${s.themeFormation.theme}">
+                </span>
+            </td>
+
+            <td th:text="${s.dateDebut}"></td>
+
+            <td th:text="${s.dateFin}"></td>
+
+            <td>
+
+                <a th:href="@{/sessions/edit/{id}(id=${s.id})}"
+                   class="btn btn-warning btn-sm">
+                    Modifier
+                </a>
+
+                <form th:action="@{/sessions/delete/{id}(id=${s.id})}"
+                      method="post"
+                      class="d-inline">
+
+                    <button type="submit"
+                            class="btn btn-danger btn-sm">
+                        Supprimer
+                    </button>
+
+                </form>
+
+            </td>
+
+        </tr>
+
+        </tbody>
+
+    </table>
+
+</div>
+
+<footer th:replace="~{common/footer :: footer}"></footer>
+
+</body>
+</html>

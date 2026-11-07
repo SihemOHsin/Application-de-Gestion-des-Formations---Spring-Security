@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{common/header :: header}"></head>
+
+<body>
+
+<div th:replace="~{common/menu :: menu}"></div>
+
+<div class="container mt-5">
+
+    <div class="d-flex justify-content-between mb-4">
+
+        <h2>Gestion des thèmes</h2>
+
+        <a th:href="@{/themes/nouveau}"
+           class="btn btn-primary">
+            Nouveau thème
+        </a>
+
+    </div>
+
+    <table class="table table-bordered table-striped">
+
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Thème</th>
+            <th>Mots-clés</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+
+        <tbody>
+
+        <tr th:each="theme : ${themes}">
+
+            <td th:text="${theme.id}"></td>
+
+            <td th:text="${theme.theme}"></td>
+
+            <td th:text="${theme.motsCles}"></td>
+
+            <td>
+
+                <a th:href="@{/themes/edit/{id}(id=${theme.id})}"
+                   class="btn btn-warning btn-sm">
+                    Modifier
+                </a>
+
+                <form th:action="@{/themes/delete/{id}(id=${theme.id})}"
+                      method="post"
+                      class="d-inline">
+
+                    <button class="btn btn-danger btn-sm">
+                        Supprimer
+                    </button>
+
+                </form>
+
+            </td>
+
+        </tr>
+
+        </tbody>
+
+    </table>
+
+</div>
+
+<footer th:replace="~{common/footer :: footer}"></footer>
+
+</body>
+</html>

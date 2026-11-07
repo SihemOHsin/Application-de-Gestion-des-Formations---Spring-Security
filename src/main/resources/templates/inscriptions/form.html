@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{common/header :: header}"></head>
+
+<body>
+
+<div th:replace="~{common/menu :: menu}"></div>
+
+<div class="container mt-5">
+
+    <h2>Nouvelle inscription</h2>
+
+    <form th:action="@{/inscriptions/save}"
+          method="post">
+
+        <div class="mb-3">
+
+            <label class="form-label">
+                Apprenant
+            </label>
+
+            <select name="apprenantId"
+                    class="form-select"
+                    required>
+
+                <option value="">
+                    Choisir un apprenant
+                </option>
+
+                <option th:each="a : ${apprenants}"
+                        th:value="${a.id}"
+                        th:text="${a.numero + ' - ' + a.prenom + ' ' + a.nom}">
+                </option>
+
+            </select>
+
+        </div>
+
+        <div class="mb-3">
+
+            <label class="form-label">
+                Session
+            </label>
+
+            <select name="sessionId"
+                    class="form-select"
+                    required>
+
+                <option value="">
+                    Choisir une session
+                </option>
+
+                <option th:each="s : ${sessions}"
+                        th:value="${s.id}"
+                        th:text="${s.description}">
+                </option>
+
+            </select>
+
+        </div>
+
+        <div class="mb-3">
+
+            <label class="form-label">
+                Date d'inscription
+            </label>
+
+            <input type="date"
+                   name="dateInscription"
+                   class="form-control"
+                   required>
+
+        </div>
+
+        <button class="btn btn-primary">
+            Enregistrer
+        </button>
+
+        <a th:href="@{/inscriptions}"
+           class="btn btn-secondary">
+            Annuler
+        </a>
+
+    </form>
+
+</div>
+
+<footer th:replace="~{common/footer :: footer}"></footer>
+
+</body>
+</html>

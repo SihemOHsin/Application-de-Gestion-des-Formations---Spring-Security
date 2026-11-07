@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{common/header :: header}"></head>
+
+<body>
+
+<div th:replace="~{common/menu :: menu}"></div>
+
+<div class="container mt-5">
+
+    <div class="d-flex justify-content-between mb-4">
+
+        <h2>Inscriptions</h2>
+
+        <a th:href="@{/inscriptions/nouvelle}"
+           class="btn btn-primary">
+            Nouvelle inscription
+        </a>
+
+    </div>
+
+    <table class="table table-bordered table-striped">
+
+        <thead>
+        <tr>
+            <th>Apprenant</th>
+            <th>Session</th>
+            <th>Thème</th>
+            <th>Date inscription</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+
+        <tbody>
+
+        <tr th:each="i : ${inscriptions}">
+
+            <td th:text="${i.apprenant.prenom + ' ' + i.apprenant.nom}">
+            </td>
+
+            <td th:text="${i.sessionFormation.description}">
+            </td>
+
+            <td th:text="${i.sessionFormation.themeFormation.theme}">
+            </td>
+
+            <td th:text="${i.dateInscription}">
+            </td>
+
+            <td>
+
+                <form th:action="@{/inscriptions/delete/{a}/{s}(a=${i.apprenant.id},s=${i.sessionFormation.id})}"
+                      method="post">
+
+                    <button class="btn btn-danger btn-sm">
+                        Supprimer
+                    </button>
+
+                </form>
+
+            </td>
+
+        </tr>
+
+        </tbody>
+
+    </table>
+
+</div>
+
+<footer th:replace="~{common/footer :: footer}"></footer>
+
+</body>
+</html>

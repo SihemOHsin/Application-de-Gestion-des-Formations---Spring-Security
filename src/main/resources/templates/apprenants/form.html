@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{common/header :: header}"></head>
+
+<body>
+
+<div th:replace="~{common/menu :: menu}"></div>
+
+<div class="container mt-5">
+
+    <h2>Apprenant</h2>
+
+    <form th:action="@{/apprenants/save}"
+          th:object="${apprenant}"
+          method="post">
+
+        <input type="hidden"
+               th:field="*{id}">
+
+        <div class="mb-3">
+
+            <label class="form-label">
+                Numéro
+            </label>
+
+            <input type="text"
+                   class="form-control"
+                   th:field="*{numero}"
+                   required>
+
+        </div>
+
+        <div class="mb-3">
+
+            <label class="form-label">
+                CIN
+            </label>
+
+            <input type="text"
+                   class="form-control"
+                   th:field="*{cin}"
+                   required>
+
+        </div>
+
+        <div class="mb-3">
+
+            <label class="form-label">
+                Prénom
+            </label>
+
+            <input type="text"
+                   class="form-control"
+                   th:field="*{prenom}"
+                   required>
+
+        </div>
+
+        <div class="mb-3">
+
+            <label class="form-label">
+                Nom
+            </label>
+
+            <input type="text"
+                   class="form-control"
+                   th:field="*{nom}"
+                   required>
+
+        </div>
+
+        <div class="mb-3">
+
+            <label class="form-label">
+                Date de naissance
+            </label>
+
+            <input type="date"
+                   class="form-control"
+                   th:field="*{dateNaissance}">
+
+        </div>
+
+        <div class="mb-3">
+
+            <label class="form-label">
+                Email
+            </label>
+
+            <input type="email"
+                   class="form-control"
+                   th:field="*{email}">
+
+        </div>
+
+        <div class="mb-3">
+
+            <label class="form-label">
+                Date de première inscription
+            </label>
+
+            <input type="date"
+                   class="form-control"
+                   th:field="*{datePremiereInscription}">
+
+        </div>
+
+        <button class="btn btn-primary">
+            Enregistrer
+        </button>
+
+        <a th:href="@{/apprenants}"
+           class="btn btn-secondary">
+            Annuler
+        </a>
+
+    </form>
+
+</div>
+
+<footer th:replace="~{common/footer :: footer}"></footer>
+
+</body>
+</html>

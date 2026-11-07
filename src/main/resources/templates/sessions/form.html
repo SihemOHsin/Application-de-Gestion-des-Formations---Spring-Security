@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{common/header :: header}"></head>
+
+<body>
+
+<div th:replace="~{common/menu :: menu}"></div>
+
+<div class="container mt-5">
+
+    <h2>Session de formation</h2>
+
+    <form th:action="@{/sessions/save}"
+          th:object="${sessionFormation}"
+          method="post">
+
+        <input type="hidden"
+               th:field="*{id}">
+
+        <div class="mb-3">
+
+            <label class="form-label">
+                Description
+            </label>
+
+            <input type="text"
+                   class="form-control"
+                   th:field="*{description}"
+                   required>
+
+        </div>
+
+        <div class="mb-3">
+
+            <label class="form-label">
+                Thème
+            </label>
+
+            <select name="themeId"
+                    class="form-select"
+                    required>
+
+                <option value="">
+                    Choisir un thème
+                </option>
+
+                <option th:each="theme : ${themes}"
+                        th:value="${theme.id}"
+                        th:text="${theme.theme}"
+                        th:selected="${sessionFormation.themeFormation != null and sessionFormation.themeFormation.id == theme.id}">
+                </option>
+
+            </select>
+
+        </div>
+
+        <div class="mb-3">
+
+            <label class="form-label">
+                Date début
+            </label>
+
+            <input type="date"
+                   class="form-control"
+                   th:field="*{dateDebut}"
+                   required>
+
+        </div>
+
+        <div class="mb-3">
+
+            <label class="form-label">
+                Date fin
+            </label>
+
+            <input type="date"
+                   class="form-control"
+                   th:field="*{dateFin}"
+                   required>
+
+        </div>
+
+        <button class="btn btn-primary">
+            Enregistrer
+        </button>
+
+        <a th:href="@{/sessions}"
+           class="btn btn-secondary">
+            Annuler
+        </a>
+
+    </form>
+
+</div>
+
+<footer th:replace="~{common/footer :: footer}"></footer>
+
+</body>
+</html>
